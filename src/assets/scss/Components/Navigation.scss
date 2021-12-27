@@ -1,0 +1,25 @@
+nav.navbar {
+  height: 56px;
+  .container {
+    .navbar-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .nav-item, .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    height: 56px;
+  }
+  img.avatar {
+    height: 35px;
+    margin-right: 0.5rem;
+  }
+  .nav-link, .dropdown-item {
+    display: flex;
+  }
+}

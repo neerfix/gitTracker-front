@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "avatar": "",
+    "firstname": "Nicolas",
+    "lastname": "Notararigo",
+    "username": "Neerfix",
+    "createdAt": "2021-03-35"
+  },
+  {
+    "id": 2,
+    "avatar": "",
+    "firstname": "Louise",
+    "lastname": "Baulan",
+    "username": "Fayaah",
+    "createdAt": "2021-03-35"
+  },
+  {
+    "id": 3,
+    "avatar": "",
+    "firstname": "Mathisse",
+    "lastname": "Livain",
+    "username": "Akiro",
+    "createdAt": "2021-03-35"
+  }
+]

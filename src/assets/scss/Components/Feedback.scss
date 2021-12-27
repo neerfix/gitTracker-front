@@ -1,0 +1,25 @@
+.feedbacks {
+  a {
+    color: white
+  }
+  .feedback {
+    display: block;
+    width: 100%;
+    border-bottom: 5px solid $primary;
+    border-radius: 5px;
+    &:hover {
+      background-color: #1009099e;
+      text-decoration: none;
+    }
+
+    .header {
+
+    }
+
+    .footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

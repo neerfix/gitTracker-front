@@ -1,0 +1,23 @@
+nav.pagination-sm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.feedbacks {
+    li {
+      &.page-item.disabled a.page-link {
+        background-color: $primary;
+        border-color: #4A5153FF;
+        font-weight: normal !important;
+      }
+      a {
+        background-color: $primary;
+        border-color: #4A5153FF;
+        color: $text;
+        font-weight: bold;
+        &:hover {
+          background-color: $primary-hover;
+        }
+      }
+    }
+  }
+}

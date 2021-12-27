@@ -1,0 +1,13 @@
+.ub-flx_1.ub-ovflw-y_auto.ub-h_240px.ub-box-szg_border-box {
+  height: 400px !important;
+}
+
+div[role='tablist'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -63px;
+  z-index: 3000;
+  position: absolute;
+  left: calc(50% - 100px);
+}

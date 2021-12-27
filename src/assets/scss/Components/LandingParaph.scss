@@ -1,0 +1,39 @@
+div.landing-paraph {
+  position: absolute;
+  color: white;
+  width: 220px;
+  h2 {
+    overflow: visible;
+    width: 300px;
+  }
+  &#github {
+    left: 11%;
+    top: 45%;
+  }
+  &#issues {
+    left: 66%;
+    top: 22%;
+  }
+  &#comments {
+    left: 66%;
+    top: 62%;
+  }
+}
+div.landing-button-action {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  width: 220px;
+  justify-content: space-between;
+}
+
+.ub-w_560px {
+  width: 80% !important;
+}
+
+div[role='tabpanel'] {
+  .ub-dspl_block {
+    display: flex !important;
+    justify-content: space-between;
+  }
+}
