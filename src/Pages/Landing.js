@@ -1,7 +1,9 @@
 import React from 'react';
 import home from "../assets/img/home.png";
-import {Button, Dialog, Pane, Paragraph, Tab, Tablist} from "evergreen-ui";
+import {Button, Dialog, Pane, Tab, Tablist} from "evergreen-ui";
 import {GithubLoginButton} from "react-social-login-buttons";
+import FormLogin from "../Components/FormLogin";
+import FormRegister from "../Components/FormRegister";
 const features = [
   {
     title: "Projet Github",
@@ -29,6 +31,7 @@ export default function Landing () {
       <Dialog
         isShown={isShown}
         onCloseComplete={() => setIsShown(false)}
+        confirmLabel={tabs[selectedIndex]}
       >
         <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
           {tabs.map((tab, index) => (
@@ -54,14 +57,18 @@ export default function Landing () {
           >
             <Pane>
               <h3>{tab} par email</h3>
-
+              {tab === 'Se connecter' ? (
+                <FormLogin />
+              ) : (
+                <FormRegister />
+              )}
             </Pane>
             <Pane>
               <h3>{tab} par Github</h3>
               <p></p>
               <GithubLoginButton
                 onClick={() => alert("Hello")}
-                text={tab + " `avec github"} />
+                text={tab + " avec github"} />
             </Pane>
           </Pane>
         ))}

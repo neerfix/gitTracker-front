@@ -73,6 +73,10 @@ h6 {
   align-items: center;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .color-grey-500 {
   color: $gray-500
 }
