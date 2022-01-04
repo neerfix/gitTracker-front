@@ -4,12 +4,18 @@ import storage from 'redux-persist/lib/storage';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import thunk from "redux-thunk";
+import {UserSession} from "./reducers/UserSession.reducers";
+import {Push} from "./reducers/Push.reducers";
+import {FetchLoginReducers} from "./reducers/FetchLogin.reducers";
 
 export const history = createBrowserHistory();
 
 const persistConfig = {
   key: 'root',
   storage,
+  FetchLogin: FetchLoginReducers,
+  UserSession,
+  Push,
 };
 
 export const reducers = combineReducers({

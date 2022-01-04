@@ -32,6 +32,7 @@ export default function Landing () {
         isShown={isShown}
         onCloseComplete={() => setIsShown(false)}
         confirmLabel={tabs[selectedIndex]}
+        hasFooter={false}
       >
         <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
           {tabs.map((tab, index) => (

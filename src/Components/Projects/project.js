@@ -1,6 +1,6 @@
 import {Link, useParams} from "react-router-dom";
-import {ArrowLeftIcon, Avatar, Button, Pane, StatusIndicator, Tab, Tablist} from "evergreen-ui";
-import React from 'react';
+import {ArrowLeftIcon, Avatar, Button, Pane, StatusIndicator, Tab, Tablist, toaster} from "evergreen-ui";
+import React, {useState} from 'react';
 import Issue from './issues';
 import Comment from './comment';
 import Information from './informations';
@@ -8,17 +8,47 @@ import projects from '../../Data/Project.json';
 import users from '../../Data/Users.json';
 import Logo from "../../assets/img/logo.png";
 import getStatusColor from "../../utils/getStatusColor";
+import * as Fetch from "../../tools/Fetch";
+import * as fake_projects from "../../Data/Project.json";
 
 export default function Project() {
   const {id} = useParams();
   const [selectedIndex, setSelectedIndex] = React.useState(0)
   const [tabs] = React.useState(['Informations', 'Issues', 'Comments'])
+  const [isLoading, setIsLoading] = useState(true);
+
+  function callProjects () {
+    if (localStorage.getItem('projects') && !isLoading) {
+      projects = JSON.parse(localStorage.getItem('projects')).default;
+    } else {
+      Fetch.getProjects()
+        .then(data_projects => {
+          //       TODO REPLACE fake-user by user after fetch working
+          localStorage.setItem('projects', JSON.stringify(fake_projects))
+        })
+        .catch(e => {
+          console.error(e)
+          toaster.danger('An error has occurred.')
+        })
+      setIsLoading(false);
+    }
+  }
+
+  function checkDom () {
+    if (document.readyState === "complete") {
+      callProjects();
+    } else {
+      setTimeout(checkDom, 1000)
+    }
+  }
+  checkDom();
+
   return (
     <>
       <div className={'container d-flex justify-content-center'}>
         <img src={Logo} alt="" height={50}/>
       </div>
-      <Link to={'/'}>
+      <Link to={'/projects'}>
         <Button marginTop={16} marginRight={16} appearance="secondary">
           <ArrowLeftIcon />&nbsp;Retour
         </Button>
@@ -60,9 +90,9 @@ export default function Project() {
           >
             {(tab === 'Informations') ? (
               <Information
-                title={projects[id-1].title}
-                descritpion={projects[id-1].description}
-                createdAt={projects[id-1].description}
+                title={projects[id-1].name}
+                descritpion={projects[id-1].shortDescription}
+                createdAt={projects[id-1].createdAt}
                 content={projects[id-1].content}
               />
             ) : ""}

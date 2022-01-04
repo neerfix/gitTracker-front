@@ -7,7 +7,7 @@ import getSeverityColor from "../../utils/getSeverityColor";
 
 export default function Issue() {
   return (
-    <>
+    <section className={'w-100'}>
       <Paragraph>
         {issues.map(({ id, title, description, author, status, type, severity}) => (
           <Pane
@@ -37,6 +37,6 @@ export default function Issue() {
           )
         )}
       </Paragraph>
-    </>
+    </section>
   );
 }

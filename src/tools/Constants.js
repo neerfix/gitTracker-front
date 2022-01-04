@@ -1,0 +1,8 @@
+module.exports = {
+  API_URL: "http://localhost:8080",
+  DISCONNECT: "DISCONNECT",
+  SUCCESS_LOGIN: "SUCCESS_LOGIN",
+  FAIL_LOGIN: "FAIL_LOGIN",
+  PUSH: "PUSH",
+  FETCH_LOGIN: "FETCH_LOGIN",
+}
