@@ -65,6 +65,7 @@ export async function getProjects(email, password) {
         'Content-Type': 'application/json;charset=utf-8',
         'Access-Control-Allow-Origin': '*'
       },
+      mode: "no-cors"
     });
 
     const data = response.data;

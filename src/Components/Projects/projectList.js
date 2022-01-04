@@ -1,25 +1,29 @@
-import {Spinner, Table, toaster} from "evergreen-ui";
-import {Link} from "react-router-dom";
-import * as fake_projects from '../../Data/Project.json';
+import {Alert, Button, Dialog, Pane, Spinner, Table, toaster} from "evergreen-ui";
+import {Link, useNavigate} from "react-router-dom";
 import * as Fetch from "../../tools/Fetch";
 import {useState} from "react";
 
 export default function ProjectList() {
-  let projects = JSON.parse(localStorage.getItem('projects')).default ?? [];
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  let projects = [];
 
   function callProjects () {
     if (localStorage.getItem('projects') && !isLoading) {
-      projects = JSON.parse(localStorage.getItem('projects')).default;
+      if (localStorage.getItem('project')) {
+        projects = localStorage.getItem('projects');
+      }
     } else {
       Fetch.getProjects()
         .then(data_projects => {
-          //       TODO REPLACE fake-user by user after fetch working
-          localStorage.setItem('projects', JSON.stringify(fake_projects))
+          if (data_projects !== undefined) {
+            localStorage.setItem('projects', JSON.stringify(data_projects))
+            projects = data_projects;
+          }
         })
         .catch(e => {
           console.error(e)
-          toaster.danger('An error has occurred.')
+          toaster.danger('Une erreur est survenue.')
         })
       setIsLoading(false);
     }
@@ -37,18 +41,27 @@ export default function ProjectList() {
   return (
     <section className={"container"}>
       <h1>Project List</h1>
+      <section>
+        <Button marginRight={16} appearance="secondary" intent="none" onClick={(e) => navigate('/settings')}>
+          Paramètres
+        </Button>
+        <Button marginRight={16} appearance="primary" intent="success" onClick={(e) => navigate('/dashboard')}>
+          Tableau de bord
+        </Button>
+      </section>
+      <br/>
     <Table>
       <Table.Head>
         <Table.SearchHeaderCell />
         <Table.TextHeaderCell>Description</Table.TextHeaderCell>
-        <Table.TextHeaderCell>Last Activity</Table.TextHeaderCell>
-        <Table.TextHeaderCell>comment</Table.TextHeaderCell>
+        <Table.TextHeaderCell>Dernière activités</Table.TextHeaderCell>
+        <Table.TextHeaderCell>commentaires</Table.TextHeaderCell>
       </Table.Head>
       <Table.Body height={240}>
         { isLoading ? (
           <Spinner />
         ) : (
-          projects.length > 1 ? (
+          projects.length > 0 ? (
             projects.map((project) => (
               <Link to={'/project/' + project.id}>
                 <Table.Row key={project.id} isSelectable>
@@ -60,7 +73,11 @@ export default function ProjectList() {
               </Link>
             ))
           ) : (
-            <Spinner />
+            <Alert
+              intent="none"
+              title="Pas encore de project créé. Soyez le premier."
+              marginBottom={32}
+            />
           )
 
         )}

@@ -2,8 +2,8 @@ import React from 'react';
 import home from "../assets/img/home.png";
 import {Button, Dialog, Pane, Tab, Tablist} from "evergreen-ui";
 import {GithubLoginButton} from "react-social-login-buttons";
-import FormLogin from "../Components/FormLogin";
-import FormRegister from "../Components/FormRegister";
+import FormLogin from "../Components/form/FormLogin";
+import FormRegister from "../Components/form/FormRegister";
 const features = [
   {
     title: "Projet Github",

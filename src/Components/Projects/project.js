@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import {ArrowLeftIcon, Avatar, Button, Pane, StatusIndicator, Tab, Tablist, toaster} from "evergreen-ui";
 import React, {useState} from 'react';
 import Issue from './issues';
@@ -16,6 +16,9 @@ export default function Project() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
   const [tabs] = React.useState(['Informations', 'Issues', 'Comments'])
   const [isLoading, setIsLoading] = useState(true);
+
+  const search = useLocation().search;
+  console.log()
 
   function callProjects () {
     if (localStorage.getItem('projects') && !isLoading) {

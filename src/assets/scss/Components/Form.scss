@@ -2,4 +2,16 @@ form {
   input {
     margin: 5px 0;
   }
+  &.w-100 > input {
+    width: 100%;
+  }
+  div {
+    &.w-100 select {
+      width: 100%;
+      margin-top: 4px;
+    }
+  }
+  &.w-100 textarea {
+    margin-top: 10px;
+  }
 }

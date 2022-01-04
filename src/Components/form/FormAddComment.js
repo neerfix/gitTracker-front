@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, TextInput, toaster} from "evergreen-ui";
-import * as Fetch from '../tools/Fetch';
+import * as Fetch from '../../tools/Fetch';
 import { useNavigate } from "react-router-dom";
 
 export default function FormRegister() {

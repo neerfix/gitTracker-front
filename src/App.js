@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import history from "./history";
 import {Home} from "./Pages/home";
 import { Projects } from "./Pages/Projects";
+import { Settings } from "./Pages/Settings";
+import {ProjectDashboard} from "./Pages/ProjectDashboard";
 
 function App() {
   return (
@@ -14,6 +16,12 @@ function App() {
         } />
         <Route exact path="/projects" element={
           <Projects />
+        } />
+        <Route exact path="/settings" element={
+          <Settings />
+        } />
+        <Route exact path="/dashboard" element={
+          <ProjectDashboard />
         } />
         <Route path="/project/:id" element={
           <Project />
